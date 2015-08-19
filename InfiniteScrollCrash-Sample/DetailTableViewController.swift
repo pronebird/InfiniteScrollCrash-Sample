@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import UIScrollView_InfiniteScroll
 
 class DetailTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
@@ -18,22 +17,14 @@ class DetailTableViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.delegate = self
         tableView.dataSource = self
         
-//        tableView.infiniteScrollIndicatorView = Indicator(activityIndicatorStyle: .Gray)
-        
-        tableView.addInfiniteScrollWithHandler { (tableView) -> Void in
-            let delay = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
-
-            dispatch_after(delay, dispatch_get_main_queue(), { () -> Void in
-                tableView?.finishInfiniteScroll()
-            })
-        }
+        tableView.contentInset = UIEdgeInsetsMake(0, 0, 128, 0)
         
         textField = UITextField(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
         navigationItem.titleView = textField
     }
     
     deinit {
-        print("DetailTableViewController.deinit")
+        print("DetailTableViewController.deinit = \(self.tableView.delegate)")
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
