@@ -54,7 +54,7 @@ static const void *kPBInfiniteScrollStateKey = &kPBInfiniteScrollStateKey;
 /**
  *  Indicator view.
  */
-@property UIView *indicatorView;
+@property __weak UIView *indicatorView;
 
 /**
  *  Indicator style when UIActivityIndicatorView used.
@@ -152,7 +152,6 @@ static const void *kPBInfiniteScrollStateKey = &kPBInfiniteScrollStateKey;
     
     // Destroy infinite scroll indicator
     [state.indicatorView removeFromSuperview];
-    state.indicatorView = nil;
     
     // Mark infinite scroll as uninitialized
     self.pb_infiniteScrollState.initialized = NO;
@@ -185,7 +184,11 @@ static const void *kPBInfiniteScrollStateKey = &kPBInfiniteScrollStateKey;
 - (void)setInfiniteScrollIndicatorView:(UIView*)indicatorView {
     // make sure indicator is initially hidden
     indicatorView.hidden = YES;
-
+    
+    // add subview to retain indicator view
+    [self addSubview:indicatorView];
+    
+    // save weak reference to indicator view
     self.pb_infiniteScrollState.indicatorView = indicatorView;
 }
 
@@ -252,7 +255,7 @@ static const void *kPBInfiniteScrollStateKey = &kPBInfiniteScrollStateKey;
 /**
  *  This is a swizzled proxy method for setContentSize of UIScrollView
  *
- *  @param contentSize <#contentSize description#>
+ *  @param contentSize
  */
 - (void)pb_setContentSize:(CGSize)contentSize {
     [self pb_setContentSize:contentSize];
@@ -312,11 +315,6 @@ static const void *kPBInfiniteScrollStateKey = &kPBInfiniteScrollStateKey;
     if(!activityIndicator) {
         activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:self.infiniteScrollIndicatorStyle];
         self.infiniteScrollIndicatorView = activityIndicator;
-    }
-    
-    // Add activity indicator into scroll view if needed
-    if(activityIndicator.superview != self) {
-        [self addSubview:activityIndicator];
     }
     
     return activityIndicator;

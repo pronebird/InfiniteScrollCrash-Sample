@@ -13,6 +13,8 @@
 		16BDC83C1B8459DD0021E095 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16BDC83A1B8459DD0021E095 /* LaunchScreen.xib */; };
 		16BDC8521B845A900021E095 /* MasterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BDC8511B845A900021E095 /* MasterTableViewController.swift */; };
 		16BDC8541B845A9B0021E095 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BDC8531B845A9B0021E095 /* DetailTableViewController.swift */; };
+		587201A01B8474850010DC62 /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5872019F1B8474850010DC62 /* Indicator.swift */; };
+		587201A21B8477120010DC62 /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587201A11B8477120010DC62 /* CustomTableView.swift */; };
 		6B793405D55454DDDD6971D7 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62757F827DA49DE971345E27 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -26,6 +28,8 @@
 		16BDC8511B845A900021E095 /* MasterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterTableViewController.swift; sourceTree = "<group>"; };
 		16BDC8531B845A9B0021E095 /* DetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
 		1E5EA2A888A3AF96D59C1942 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		5872019F1B8474850010DC62 /* Indicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
+		587201A11B8477120010DC62 /* CustomTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
 		62757F827DA49DE971345E27 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		838E16244F2D9530C04CECEB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,6 +70,8 @@
 				16BDC8351B8459DD0021E095 /* Main.storyboard */,
 				16BDC8511B845A900021E095 /* MasterTableViewController.swift */,
 				16BDC8531B845A9B0021E095 /* DetailTableViewController.swift */,
+				587201A11B8477120010DC62 /* CustomTableView.swift */,
+				5872019F1B8474850010DC62 /* Indicator.swift */,
 				16BDC82F1B8459DD0021E095 /* Supporting Files */,
 			);
 			path = "InfiniteScrollCrash-Sample";
@@ -128,6 +134,7 @@
 		16BDC8241B8459DD0021E095 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = gbmKSquare;
 				TargetAttributes = {
@@ -220,9 +227,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				587201A21B8477120010DC62 /* CustomTableView.swift in Sources */,
 				16BDC8541B845A9B0021E095 /* DetailTableViewController.swift in Sources */,
 				16BDC8321B8459DD0021E095 /* AppDelegate.swift in Sources */,
 				16BDC8521B845A900021E095 /* MasterTableViewController.swift in Sources */,
+				587201A01B8474850010DC62 /* Indicator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
