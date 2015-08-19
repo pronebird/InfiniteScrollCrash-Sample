@@ -45,7 +45,7 @@
                         <viewControllerLayoutGuide type="top" id="cMj-hR-uNu"/>
                         <viewControllerLayoutGuide type="bottom" id="xHa-pB-9Do"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="vHM-Sq-2tU">
+                    <view key="view" contentMode="scaleToFill" id="vHM-Sq-2tU" customClass="CustomView" customModule="InfiniteScrollCrash_Sample" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>

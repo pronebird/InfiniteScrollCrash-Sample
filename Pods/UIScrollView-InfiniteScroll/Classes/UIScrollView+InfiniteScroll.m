@@ -22,7 +22,7 @@
 @implementation _PBActivityIndicatorView
 
 - (void)dealloc {
-    NSLog(@"_PBActivityIndicatorView.dealloc");
+    printf("_PBActivityIndicatorView.dealloc\n");
 }
 
 @end
