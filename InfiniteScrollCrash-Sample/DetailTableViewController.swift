@@ -18,14 +18,13 @@ class DetailTableViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableView.addInfiniteScrollWithHandler { [weak self] (_) -> Void in // Crash
-//        tableView.addInfiniteScrollWithHandler { (tableView) -> Void in // Crash
-//            tableView.addInfiniteScrollWithHandler { (_) -> Void in // No crash, but creates retain cycle
+        tableView.infiniteScrollIndicatorView = ActivityIndicator(activityIndicatorStyle: .Gray)
+        
+        tableView.addInfiniteScrollWithHandler { (tableView) -> Void in // Crash
             let delay = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
+            
             dispatch_after(delay, dispatch_get_main_queue(), { () -> Void in
-                self?.tableView.finishInfiniteScroll()
-//                tableView.finishInfiniteScroll()
-//                self.tableView.finishInfiniteScroll()
+                tableView.finishInfiniteScroll()
             })
         }
         
@@ -33,14 +32,8 @@ class DetailTableViewController: UIViewController, UITableViewDelegate, UITableV
         navigationItem.titleView = textField
     }
     
-    override func viewWillDisappear(animated: Bool) {
-//        tableView.finishInfiniteScroll() // Solution 1 when using [weak self]
-        super.viewWillDisappear(animated)
-    }
-    
-    override func viewDidDisappear(animated: Bool) {
-//        tableView.delegate = nil // Solution 2 when using [weak self]
-        super.viewDidDisappear(animated)
+    deinit {
+        print("Controller.deinit")
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -52,13 +45,13 @@ class DetailTableViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         cell.textLabel?.text = "Scroll down and go back."
         return cell
     }
     
     // If uses [weak self] but does not implement delegate method below, it will not crash
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        println("Scrolled")
+        print("Scrolled")
     }
 }
