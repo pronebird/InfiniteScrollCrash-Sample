@@ -18,6 +18,15 @@
 #   define TRACE(_format, ...)
 #endif
 
+@interface _PBActivityIndicatorView : UIActivityIndicatorView @end
+@implementation _PBActivityIndicatorView
+
+- (void)dealloc {
+    NSLog(@"_PBActivityIndicatorView.dealloc");
+}
+
+@end
+
 static void PBSwizzleMethod(Class c, SEL original, SEL alternate) {
     Method origMethod = class_getInstanceMethod(c, original);
     Method newMethod = class_getInstanceMethod(c, alternate);
@@ -313,7 +322,7 @@ static const void *kPBInfiniteScrollStateKey = &kPBInfiniteScrollStateKey;
     UIView *activityIndicator = self.infiniteScrollIndicatorView;
     
     if(!activityIndicator) {
-        activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:self.infiniteScrollIndicatorStyle];
+        activityIndicator = [[_PBActivityIndicatorView alloc] initWithActivityIndicatorStyle:self.infiniteScrollIndicatorStyle];
         self.infiniteScrollIndicatorView = activityIndicator;
     }
     

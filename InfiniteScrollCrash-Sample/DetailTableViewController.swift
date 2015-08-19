@@ -18,7 +18,7 @@ class DetailTableViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableView.infiniteScrollIndicatorView = Indicator(activityIndicatorStyle: .Gray)
+//        tableView.infiniteScrollIndicatorView = Indicator(activityIndicatorStyle: .Gray)
         
         tableView.addInfiniteScrollWithHandler { (tableView) -> Void in
             let delay = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
